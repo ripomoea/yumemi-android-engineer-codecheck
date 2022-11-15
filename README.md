@@ -4,6 +4,27 @@
 
 本プロジェクトは株式会社ゆめみ（以下弊社）が、弊社に Android エンジニアを希望する方に出す課題のベースプロジェクトです。本課題が与えられた方は、下記の概要を詳しく読んだ上で課題を取り組んでください。
 
+## GetStarted
+
+以下の手順を踏んで開発に参加しましょう。
+
+### 1. `git clone`
+
+以下のコマンドを実行してクローンします。
+
+```shell
+git clone https://github.com/ripomoea/yumemi-android-engineer-codecheck.git
+```
+
+### 2. `make setup-project`
+
+プロジェクトのセットアップ処理を `/scripts` ディレクトリ配下に作成し `Makefile` 側でまとめて実行できるようにしています。
+以下のコマンドを実行してセットアップしてください。
+
+```shell
+make setup-project
+```
+
 ## アプリ仕様
 
 本アプリは GitHub のリポジトリを検索するアプリです。
