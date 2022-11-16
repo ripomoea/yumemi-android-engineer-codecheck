@@ -14,7 +14,7 @@ import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
 import java.util.Date
-import jp.co.yumemi.android.codecheck.TopActivity.Companion.lastSearchDate
+import jp.co.yumemi.android.codecheck.MainActivity.Companion.lastSearchDate
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
@@ -22,14 +22,14 @@ import kotlinx.parcelize.Parcelize
 import org.json.JSONObject
 
 /**
- * TwoFragment で使う
+ * RepositoryDetailFragment で使う
  */
-class OneViewModel(
+class RepositorySearchViewModel(
     val context: Context,
 ) : ViewModel() {
 
     // 検索結果
-    fun searchResults(inputText: String): List<item> = runBlocking {
+    fun searchRepositories(inputText: String): List<Repository> = runBlocking {
         val client = HttpClient(Android)
 
         return@runBlocking GlobalScope.async {
@@ -42,7 +42,7 @@ class OneViewModel(
 
             val jsonItems = jsonBody.optJSONArray("items")!!
 
-            val items = mutableListOf<item>()
+            val repositories = mutableListOf<Repository>()
 
             /**
              * アイテムの個数分ループする
@@ -57,8 +57,8 @@ class OneViewModel(
                 val forksCount = jsonItem.optLong("forks_conut")
                 val openIssuesCount = jsonItem.optLong("open_issues_count")
 
-                items.add(
-                    item(
+                repositories.add(
+                    Repository(
                         name = name,
                         ownerIconUrl = ownerIconUrl,
                         language = context.getString(R.string.written_language, language),
@@ -72,13 +72,13 @@ class OneViewModel(
 
             lastSearchDate = Date()
 
-            return@async items.toList()
+            return@async repositories.toList()
         }.await()
     }
 }
 
 @Parcelize
-data class item(
+data class Repository(
     val name: String,
     val ownerIconUrl: String,
     val language: String,
