@@ -29,27 +29,27 @@ class RepositorySearchFragment : Fragment(R.layout.fragment_repository_search) {
 
         val layoutManager = LinearLayoutManager(context!!)
         val dividerItemDecoration =
-                DividerItemDecoration(context!!, layoutManager.orientation)
+            DividerItemDecoration(context!!, layoutManager.orientation)
         val adapter = RepositoryListAdapter(
-                object : RepositoryListAdapter.OnItemClickListener {
-                    override fun onItemClick(repository: Repository) {
-                        navigateToRepositoryDetailFragment(repository)
-                    }
+            object : RepositoryListAdapter.OnItemClickListener {
+                override fun onItemClick(repository: Repository) {
+                    navigateToRepositoryDetailFragment(repository)
                 }
+            }
         )
 
         binding.searchInputText
-                .setOnEditorActionListener { editText, action, _ ->
-                    if (action == EditorInfo.IME_ACTION_SEARCH) {
-                        editText.text.toString().let {
-                            repositorySearchViewModel.searchRepositories(it).apply {
-                                adapter.submitList(this)
-                            }
+            .setOnEditorActionListener { editText, action, _ ->
+                if (action == EditorInfo.IME_ACTION_SEARCH) {
+                    editText.text.toString().let {
+                        repositorySearchViewModel.searchRepositories(it).apply {
+                            adapter.submitList(this)
                         }
-                        return@setOnEditorActionListener true
                     }
-                    return@setOnEditorActionListener false
+                    return@setOnEditorActionListener true
                 }
+                return@setOnEditorActionListener false
+            }
 
         binding.recyclerView.also {
             it.layoutManager = layoutManager
@@ -60,7 +60,7 @@ class RepositorySearchFragment : Fragment(R.layout.fragment_repository_search) {
 
     fun navigateToRepositoryDetailFragment(repository: Repository) {
         val action = RepositorySearchFragmentDirections
-                .actionToRepositoryDetailFragment(repository = repository)
+            .actionToRepositoryDetailFragment(repository = repository)
         findNavController().navigate(action)
     }
 }
@@ -77,7 +77,7 @@ val diffUtil = object : DiffUtil.ItemCallback<Repository>() {
 }
 
 class RepositoryListAdapter(
-        private val itemClickListener: OnItemClickListener,
+    private val itemClickListener: OnItemClickListener,
 ) : ListAdapter<Repository, RepositoryListAdapter.ViewHolder>(diffUtil) {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
@@ -88,14 +88,14 @@ class RepositoryListAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_repository_list, parent, false)
+            .inflate(R.layout.item_repository_list, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val repository = getItem(position)
         (holder.itemView.findViewById<View>(R.id.repositoryNameView) as TextView).text =
-                repository.name
+            repository.name
 
         holder.itemView.setOnClickListener {
             itemClickListener.onItemClick(repository)
