@@ -21,14 +21,13 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.parcelize.Parcelize
 import org.json.JSONObject
 
-/**
- * RepositoryDetailFragment で使う
- */
 class RepositorySearchViewModel(
     val context: Context,
 ) : ViewModel() {
 
-    // 検索結果
+    /**
+     * リポジトリをキーワード検索して一致した一覧を返却する
+     */
     fun searchRepositories(inputText: String): List<Repository> = runBlocking {
         val client = HttpClient(Android)
 
@@ -44,9 +43,6 @@ class RepositorySearchViewModel(
 
             val repositories = mutableListOf<Repository>()
 
-            /**
-             * アイテムの個数分ループする
-             */
             for (i in 0 until jsonItems.length()) {
                 val jsonItem = jsonItems.optJSONObject(i)!!
                 val name = jsonItem.optString("full_name")
