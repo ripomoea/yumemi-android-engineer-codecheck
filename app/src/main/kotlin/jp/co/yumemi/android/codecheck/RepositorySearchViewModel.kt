@@ -3,8 +3,6 @@
  */
 package jp.co.yumemi.android.codecheck
 
-import android.content.Context
-import android.os.Parcelable
 import androidx.lifecycle.ViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
@@ -18,12 +16,9 @@ import jp.co.yumemi.android.codecheck.MainActivity.Companion.lastSearchDate
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
-import kotlinx.parcelize.Parcelize
 import org.json.JSONObject
 
-class RepositorySearchViewModel(
-    val context: Context,
-) : ViewModel() {
+class RepositorySearchViewModel : ViewModel() {
 
     /**
      * リポジトリをキーワード検索して一致した一覧を返却する
@@ -57,7 +52,7 @@ class RepositorySearchViewModel(
                     Repository(
                         name = name,
                         ownerIconUrl = ownerIconUrl,
-                        language = context.getString(R.string.written_language, language),
+                        language = language,
                         stargazersCount = stargazersCount,
                         watchersCount = watchersCount,
                         forksCount = forksCount,
@@ -72,14 +67,3 @@ class RepositorySearchViewModel(
         }.await()
     }
 }
-
-@Parcelize
-data class Repository(
-    val name: String,
-    val ownerIconUrl: String,
-    val language: String,
-    val stargazersCount: Long,
-    val watchersCount: Long,
-    val forksCount: Long,
-    val openIssuesCount: Long,
-) : Parcelable
