@@ -12,13 +12,17 @@ import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
 import java.util.Date
-import jp.co.yumemi.android.codecheck.MainActivity.Companion.lastSearchDate
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
 
 class RepositorySearchViewModel : ViewModel() {
+
+    private val _lastSearchDate = MutableStateFlow<Date?>(null)
+    val lastSearchDate: StateFlow<Date?> = _lastSearchDate
 
     /**
      * リポジトリをキーワード検索して一致した一覧を返却する
@@ -64,7 +68,7 @@ class RepositorySearchViewModel : ViewModel() {
                 )
             }
 
-            lastSearchDate = Date()
+            _lastSearchDate.value = Date()
 
             return@async repositories.toList()
         }.await()

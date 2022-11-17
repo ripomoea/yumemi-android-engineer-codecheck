@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -20,12 +21,12 @@ import jp.co.yumemi.android.codecheck.databinding.FragmentRepositorySearchBindin
 
 class RepositorySearchFragment : Fragment(R.layout.fragment_repository_search) {
 
+    private val repositorySearchViewModel: RepositorySearchViewModel by viewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = FragmentRepositorySearchBinding.bind(view)
-
-        val repositorySearchViewModel = RepositorySearchViewModel()
 
         val layoutManager = LinearLayoutManager(requireContext())
         val dividerItemDecoration =
@@ -59,8 +60,9 @@ class RepositorySearchFragment : Fragment(R.layout.fragment_repository_search) {
     }
 
     fun navigateToRepositoryDetailFragment(repository: Repository) {
+        val lastSearchDate = repositorySearchViewModel.lastSearchDate.value ?: return
         val action = RepositorySearchFragmentDirections
-            .actionToRepositoryDetailFragment(repository = repository)
+            .actionToRepositoryDetailFragment(lastSearchDate, repository)
         findNavController().navigate(action)
     }
 }
