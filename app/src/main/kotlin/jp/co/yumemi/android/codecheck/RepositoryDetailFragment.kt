@@ -27,10 +27,14 @@ class RepositoryDetailFragment : Fragment(R.layout.fragment_repository_detail) {
 
         binding.ownerIconView.load(repository.ownerIconUrl)
         binding.nameView.text = repository.name
-        binding.languageView.text = repository.language
-        binding.starsView.text = "${repository.stargazersCount} stars"
-        binding.watchersView.text = "${repository.watchersCount} watchers"
-        binding.forksView.text = "${repository.forksCount} forks"
-        binding.openIssuesView.text = "${repository.openIssuesCount} open issues"
+        binding.languageView.text =
+            getString(R.string.repository_detail_written_language, repository.language)
+        binding.starsView.text =
+            getString(R.string.repository_detail_stars, repository.stargazersCount)
+        binding.watchersView.text =
+            getString(R.string.repository_detail_watchers, repository.watchersCount)
+        binding.forksView.text = getString(R.string.repository_detail_forks, repository.forksCount)
+        binding.openIssuesView.text =
+            getString(R.string.repository_detail_open_issues, repository.openIssuesCount)
     }
 }
