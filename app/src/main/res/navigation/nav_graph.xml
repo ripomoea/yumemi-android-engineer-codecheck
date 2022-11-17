@@ -21,6 +21,9 @@
         android:label="@string/app_name"
         tools:layout="@layout/fragment_repository_detail">
         <argument
+            android:name="lastSearchDate"
+            app:argType="java.util.Date" />
+        <argument
             android:name="repository"
             app:argType="jp.co.yumemi.android.codecheck.Repository" />
     </fragment>
