@@ -27,5 +27,9 @@ gradlePlugin {
             id = "jp.co.yumemi.android.codecheck.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
+        register("androidLibrary") {
+            id = "jp.co.yumemi.android.codecheck.android.library"
+            implementationClass = "AndroidLibraryConventionPlugin"
+        }
     }
 }
