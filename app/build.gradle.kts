@@ -29,8 +29,6 @@ android {
 }
 
 dependencies {
-    coreLibraryDesugaring(libs.android.desugarJdkLibs)
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.android.material)
