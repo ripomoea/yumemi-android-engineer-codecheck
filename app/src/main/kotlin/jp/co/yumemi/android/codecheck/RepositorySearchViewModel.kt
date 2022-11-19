@@ -5,6 +5,7 @@ package jp.co.yumemi.android.codecheck
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
 import io.ktor.client.engine.android.Android
@@ -13,6 +14,7 @@ import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
 import java.util.Date
+import javax.inject.Inject
 import jp.co.yumemi.android.codecheck.core.model.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,7 +23,8 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
-class RepositorySearchViewModel : ViewModel() {
+@HiltViewModel
+class RepositorySearchViewModel @Inject constructor() : ViewModel() {
 
     private val _lastSearchDate = MutableStateFlow<Date?>(null)
     val lastSearchDate: StateFlow<Date?> = _lastSearchDate

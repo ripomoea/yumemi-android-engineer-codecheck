@@ -1,5 +1,6 @@
 plugins {
     id("jp.co.yumemi.android.codecheck.android.application")
+    id("jp.co.yumemi.android.codecheck.android.hilt")
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.androidx.navigation.safeArgs)
 }
