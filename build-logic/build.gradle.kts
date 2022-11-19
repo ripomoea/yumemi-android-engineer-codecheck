@@ -19,6 +19,7 @@ dependencies {
     implementation(libs.android.gradlePlugin)
     implementation(libs.kotlin.gradlePlugin)
     implementation(libs.androidx.navigation.safeArgs.gradlePlugin)
+    implementation(libs.hilt.android.gradlePlugin)
 }
 
 gradlePlugin {
@@ -30,6 +31,10 @@ gradlePlugin {
         register("androidLibrary") {
             id = "jp.co.yumemi.android.codecheck.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
+        }
+        register("androidHilt") {
+            id = "jp.co.yumemi.android.codecheck.android.hilt"
+            implementationClass = "AndroidHiltConventionPlugin"
         }
     }
 }
