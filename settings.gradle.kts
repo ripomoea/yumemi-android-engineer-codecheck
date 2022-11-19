@@ -17,3 +17,4 @@ dependencyResolutionManagement {
 rootProject.name = "Android Engineer CodeCheck"
 include(":app")
 include(":core:model")
+include(":core:network")
