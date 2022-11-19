@@ -1,5 +1,6 @@
 plugins {
     id("jp.co.yumemi.android.codecheck.android.library")
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {

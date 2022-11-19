@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck
+package jp.co.yumemi.android.codecheck.core.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

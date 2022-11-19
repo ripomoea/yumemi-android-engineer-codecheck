@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import jp.co.yumemi.android.codecheck.core.model.Repository
 import jp.co.yumemi.android.codecheck.databinding.FragmentRepositorySearchBinding
 
 class RepositorySearchFragment : Fragment(R.layout.fragment_repository_search) {
