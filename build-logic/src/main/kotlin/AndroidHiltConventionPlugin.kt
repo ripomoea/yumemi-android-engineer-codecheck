@@ -18,6 +18,8 @@ class AndroidHiltConventionPlugin : Plugin<Project> {
 
             dependencies {
                 implementation(libs.findLibrary("hilt.android"))
+                // https://issuetracker.google.com/issues/237567009
+                implementation(libs.findLibrary("androidx.fragment.ktx"))
                 kapt(libs.findLibrary("hilt.compiler"))
             }
             extensions.configure<KaptExtension> {
