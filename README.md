@@ -34,8 +34,8 @@ make setup-project
 ### 環境
 
 - IDE：Android Studio Dolphin | 2021.3.1 Patch 1
-- Kotlin：1.5.31
-- Java：11
+- Kotlin：1.7.20
+- Java：1.8
 - Gradle：7.5.1
 - minSdk：23
 - targetSdk：31
