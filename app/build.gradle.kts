@@ -1,7 +1,6 @@
 plugins {
     id("jp.co.yumemi.android.codecheck.android.application")
     alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.androidx.navigation.safeArgs)
 }
 

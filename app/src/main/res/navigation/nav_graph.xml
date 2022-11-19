@@ -25,7 +25,7 @@
             app:argType="java.util.Date" />
         <argument
             android:name="repository"
-            app:argType="jp.co.yumemi.android.codecheck.Repository" />
+            app:argType="jp.co.yumemi.android.codecheck.core.model.Repository" />
     </fragment>
 
 </navigation>
