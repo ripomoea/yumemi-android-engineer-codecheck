@@ -7,11 +7,12 @@ androidxAppCompat = "1.3.1"
 material = "1.4.0"
 androidxConstraintLayout = "2.1.1"
 androidxRecyclerView = "1.2.1"
-androidxLifecycle = "2.3.1"
+androidxLifecycle = "2.5.1"
 androidxNavigation = "2.4.1"
 kotlinxCoroutines = "1.5.2"
 ktor = "1.6.4"
 coil = "1.3.2"
+hilt = "2.44.2"
 junit4 = "4.13.2"
 androidxTestExt = "1.1.3"
 androidxEspresso = "3.4.0"
@@ -20,6 +21,7 @@ androidxEspresso = "3.4.0"
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 androidx-navigation-safeArgs-gradlePlugin = { group = "androidx.navigation", name = "navigation-safe-args-gradle-plugin", version.ref = "androidxNavigation" }
+hilt-android-gradlePlugin = { group = "com.google.dagger", name = "hilt-android-gradle-plugin", version.ref = "hilt" }
 
 android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
 android-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
@@ -39,6 +41,10 @@ kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 ktor-client-android = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
 
 coil-kt = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
+
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 
 junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
 androidx-test-ext = { group = "androidx.test.ext", name = "junit", version.ref = "androidxTestExt" }
