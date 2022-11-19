@@ -1,18 +1,13 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    id("jp.co.yumemi.android.codecheck.android.application")
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.androidx.navigation.safeArgs)
 }
 
 android {
-    compileSdk = 31
-
     defaultConfig {
         applicationId = "jp.co.yumemi.android.codecheck"
-        minSdk = 23
-        targetSdk = 31
         versionCode = 1
         versionName = "1.0"
 
@@ -27,14 +22,6 @@ android {
                 "proguard-rules.pro",
             )
         }
-    }
-    compileOptions {
-        isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
     buildFeatures {
         viewBinding = true

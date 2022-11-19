@@ -20,3 +20,12 @@ dependencies {
     implementation(libs.kotlin.gradlePlugin)
     implementation(libs.androidx.navigation.safeArgs.gradlePlugin)
 }
+
+gradlePlugin {
+    plugins {
+        register("androidApplication") {
+            id = "jp.co.yumemi.android.codecheck.android.application"
+            implementationClass = "AndroidApplicationConventionPlugin"
+        }
+    }
+}
