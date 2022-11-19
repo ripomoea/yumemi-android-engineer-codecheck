@@ -36,5 +36,9 @@ gradlePlugin {
             id = "jp.co.yumemi.android.codecheck.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
+        register("kotlinParcelize") {
+            id = "jp.co.yumemi.android.codecheck.kotlin.parcelize"
+            implementationClass = "KotlinParcelizeConventionPlugin"
+        }
     }
 }
