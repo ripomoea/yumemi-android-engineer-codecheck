@@ -1,5 +1,6 @@
 plugins {
     id("jp.co.yumemi.android.codecheck.android.library")
+    id("jp.co.yumemi.android.codecheck.android.hilt")
 }
 
 android {
@@ -16,4 +17,8 @@ android {
                 "proguard-rules.pro")
         }
     }
+}
+
+dependencies {
+    implementation(libs.ktor.client.android)
 }
