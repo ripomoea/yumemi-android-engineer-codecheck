@@ -18,6 +18,7 @@ java {
 dependencies {
     implementation(libs.android.gradlePlugin)
     implementation(libs.kotlin.gradlePlugin)
+    implementation(libs.kotlin.serialization.gradlePlugin)
     implementation(libs.androidx.navigation.safeArgs.gradlePlugin)
     implementation(libs.hilt.android.gradlePlugin)
 }
@@ -39,6 +40,10 @@ gradlePlugin {
         register("kotlinParcelize") {
             id = "jp.co.yumemi.android.codecheck.kotlin.parcelize"
             implementationClass = "KotlinParcelizeConventionPlugin"
+        }
+        register("kotlinSerialization") {
+            id = "jp.co.yumemi.android.codecheck.kotlin.serialization"
+            implementationClass = "KotlinSerializationConventionPlugin"
         }
     }
 }
