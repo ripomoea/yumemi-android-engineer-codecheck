@@ -18,26 +18,26 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
-import jp.co.yumemi.android.codecheck.core.model.Repository
-import jp.co.yumemi.android.codecheck.databinding.FragmentRepositorySearchBinding
+import jp.co.yumemi.android.codecheck.core.model.GithubRepo
+import jp.co.yumemi.android.codecheck.databinding.FragmentGithubrepoSearchBinding
 
 @AndroidEntryPoint
-class RepositorySearchFragment : Fragment(R.layout.fragment_repository_search) {
+class GithubRepoSearchFragment : Fragment(R.layout.fragment_githubrepo_search) {
 
-    private val repositorySearchViewModel: RepositorySearchViewModel by viewModels()
+    private val githubRepoSearchViewModel: GithubRepoSearchViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = FragmentRepositorySearchBinding.bind(view)
+        val binding = FragmentGithubrepoSearchBinding.bind(view)
 
         val layoutManager = LinearLayoutManager(requireContext())
         val dividerItemDecoration =
             DividerItemDecoration(requireContext(), layoutManager.orientation)
         val adapter = RepositoryListAdapter(
             object : RepositoryListAdapter.OnItemClickListener {
-                override fun onItemClick(repository: Repository) {
-                    navigateToRepositoryDetailFragment(repository)
+                override fun onItemClick(githubRepo: GithubRepo) {
+                    navigateToRepositoryDetailFragment(githubRepo)
                 }
             }
         )
@@ -46,7 +46,7 @@ class RepositorySearchFragment : Fragment(R.layout.fragment_repository_search) {
             .setOnEditorActionListener { editText, action, _ ->
                 if (action == EditorInfo.IME_ACTION_SEARCH) {
                     editText.text.toString().let {
-                        repositorySearchViewModel.searchRepositories(it).apply {
+                        githubRepoSearchViewModel.searchRepositories(it).apply {
                             adapter.submitList(this)
                         }
                     }
@@ -62,20 +62,20 @@ class RepositorySearchFragment : Fragment(R.layout.fragment_repository_search) {
         }
     }
 
-    fun navigateToRepositoryDetailFragment(repository: Repository) {
-        val lastSearchDate = repositorySearchViewModel.lastSearchDate.value ?: return
-        val action = RepositorySearchFragmentDirections
-            .actionToRepositoryDetailFragment(lastSearchDate, repository)
+    fun navigateToRepositoryDetailFragment(githubRepo: GithubRepo) {
+        val lastSearchDate = githubRepoSearchViewModel.lastSearchDate.value ?: return
+        val action = GithubRepoSearchFragmentDirections
+            .actionToGithubRepoDetailFragment(lastSearchDate, githubRepo)
         findNavController().navigate(action)
     }
 }
 
-val diffUtil = object : DiffUtil.ItemCallback<Repository>() {
-    override fun areItemsTheSame(oldItem: Repository, newItem: Repository): Boolean {
+val diffUtil = object : DiffUtil.ItemCallback<GithubRepo>() {
+    override fun areItemsTheSame(oldItem: GithubRepo, newItem: GithubRepo): Boolean {
         return oldItem.name == newItem.name
     }
 
-    override fun areContentsTheSame(oldItem: Repository, newItem: Repository): Boolean {
+    override fun areContentsTheSame(oldItem: GithubRepo, newItem: GithubRepo): Boolean {
         return oldItem == newItem
     }
 
@@ -83,17 +83,17 @@ val diffUtil = object : DiffUtil.ItemCallback<Repository>() {
 
 class RepositoryListAdapter(
     private val itemClickListener: OnItemClickListener,
-) : ListAdapter<Repository, RepositoryListAdapter.ViewHolder>(diffUtil) {
+) : ListAdapter<GithubRepo, RepositoryListAdapter.ViewHolder>(diffUtil) {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     interface OnItemClickListener {
-        fun onItemClick(repository: Repository)
+        fun onItemClick(githubRepo: GithubRepo)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_repository_list, parent, false)
+            .inflate(R.layout.item_githubrepo_list, parent, false)
         return ViewHolder(view)
     }
 

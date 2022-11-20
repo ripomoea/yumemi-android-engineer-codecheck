@@ -14,7 +14,7 @@ import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
 import java.util.Date
 import javax.inject.Inject
-import jp.co.yumemi.android.codecheck.core.model.Repository
+import jp.co.yumemi.android.codecheck.core.model.GithubRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -23,7 +23,7 @@ import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
 @HiltViewModel
-class RepositorySearchViewModel @Inject constructor(
+class GithubRepoSearchViewModel @Inject constructor(
     private val client: HttpClient,
 ) : ViewModel() {
 
@@ -33,7 +33,7 @@ class RepositorySearchViewModel @Inject constructor(
     /**
      * リポジトリをキーワード検索して一致した一覧を返却する
      */
-    fun searchRepositories(inputText: String): List<Repository> = runBlocking {
+    fun searchRepositories(inputText: String): List<GithubRepo> = runBlocking {
         val result = runCatching {
             val response: HttpResponse = withContext(Dispatchers.IO) {
                 client.get("https://api.github.com/search/repositories") {
@@ -46,7 +46,7 @@ class RepositorySearchViewModel @Inject constructor(
 
             val jsonItems = jsonBody.optJSONArray("items") ?: return@runCatching emptyList()
 
-            val repositories = mutableListOf<Repository>()
+            val repositories = mutableListOf<GithubRepo>()
 
             for (i in 0 until jsonItems.length()) {
                 val jsonItem = jsonItems.optJSONObject(i) ?: continue
@@ -62,7 +62,7 @@ class RepositorySearchViewModel @Inject constructor(
                 val openIssuesCount = jsonItem.optLong("open_issues_count")
 
                 repositories.add(
-                    Repository(
+                    GithubRepo(
                         name = name,
                         ownerIconUrl = ownerIconUrl,
                         language = language,
