@@ -7,7 +7,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.ktor.client.HttpClient
-import io.ktor.client.call.receive
+import io.ktor.client.call.body
 import io.ktor.client.engine.android.Android
 import io.ktor.client.request.get
 import io.ktor.client.request.header
@@ -43,7 +43,7 @@ class RepositorySearchViewModel @Inject constructor() : ViewModel() {
                 }
             }
 
-            val jsonBody = JSONObject(response.receive<String>())
+            val jsonBody = JSONObject(response.body<String>())
 
             val jsonItems = jsonBody.optJSONArray("items") ?: return@runCatching emptyList()
 
