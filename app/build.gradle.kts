@@ -47,7 +47,7 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
 
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.core)
 
     implementation(libs.coil.kt)
 
