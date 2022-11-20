@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
-import io.ktor.client.engine.android.Android
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
@@ -24,7 +23,9 @@ import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
 @HiltViewModel
-class RepositorySearchViewModel @Inject constructor() : ViewModel() {
+class RepositorySearchViewModel @Inject constructor(
+    private val client: HttpClient,
+) : ViewModel() {
 
     private val _lastSearchDate = MutableStateFlow<Date?>(null)
     val lastSearchDate: StateFlow<Date?> = _lastSearchDate
@@ -33,8 +34,6 @@ class RepositorySearchViewModel @Inject constructor() : ViewModel() {
      * リポジトリをキーワード検索して一致した一覧を返却する
      */
     fun searchRepositories(inputText: String): List<Repository> = runBlocking {
-        val client = HttpClient(Android)
-
         val result = runCatching {
             val response: HttpResponse = withContext(Dispatchers.IO) {
                 client.get("https://api.github.com/search/repositories") {
