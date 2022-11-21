@@ -23,6 +23,12 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    testOptions {
+        unitTests {
+            // TODO: android.util.Log エラー回避で導入中, Robolectric などの代替案を考える
+            isReturnDefaultValues = true
+        }
+    }
 }
 
 dependencies {
