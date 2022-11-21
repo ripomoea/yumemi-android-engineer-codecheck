@@ -4,9 +4,12 @@ import jp.co.yumemi.android.codecheck.core.model.GithubRepo
 import jp.co.yumemi.android.codecheck.core.network.model.NetworkGithubRepo
 
 internal fun NetworkGithubRepo.asModel() = GithubRepo(
+    id = id,
     name = name,
-    ownerIconUrl = owner?.iconUrl ?: "",
-    language = language ?: "",
+    ownerName = owner?.login,
+    ownerIconUrl = owner?.iconUrl,
+    description = description,
+    language = language,
     stargazersCount = stargazersCount,
     watchersCount = watchersCount,
     forksCount = forksCount,

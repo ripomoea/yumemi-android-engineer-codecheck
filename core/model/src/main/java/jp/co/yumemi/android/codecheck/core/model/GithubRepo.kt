@@ -8,9 +8,12 @@ import kotlinx.parcelize.Parcelize
  */
 @Parcelize
 data class GithubRepo(
+    val id: Long,
     val name: String,
-    val ownerIconUrl: String,
-    val language: String,
+    val ownerName: String?,
+    val ownerIconUrl: String?,
+    val description: String,
+    val language: String?,
     val stargazersCount: Long,
     val watchersCount: Long,
     val forksCount: Long,
