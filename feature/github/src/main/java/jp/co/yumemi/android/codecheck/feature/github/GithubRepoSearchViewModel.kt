@@ -3,49 +3,30 @@
  */
 package jp.co.yumemi.android.codecheck.feature.github
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Date
 import javax.inject.Inject
-import jp.co.yumemi.android.codecheck.core.data.GithubRepository
-import jp.co.yumemi.android.codecheck.core.model.GithubRepo
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
 @HiltViewModel
-class GithubRepoSearchViewModel @Inject constructor(
-    private val githubRepository: GithubRepository,
-) : ViewModel() {
+internal class GithubRepoSearchViewModel @Inject constructor() : ViewModel() {
+    sealed class Effect {
+        data class NavigateToList(val query: String, val lastSearchDate: Date) : Effect()
+    }
 
-    private val _lastSearchDate = MutableStateFlow<Date?>(null)
-    val lastSearchDate: StateFlow<Date?> = _lastSearchDate
+    private val _effect: MutableSharedFlow<Effect> = MutableSharedFlow()
+    val effect: SharedFlow<Effect> = _effect
 
-    /**
-     * キーワード検索に一致したリポジトリ一覧
-     */
-    val githubRepos: StateFlow<List<GithubRepo>> = githubRepository.getGithubReposStream()
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = emptyList(),
-        )
+    fun searchGithubRepos(editText: CharSequence) {
+        val query = editText.toString()
+        val searchDate = Date()
 
-    /**
-     * リポジトリをキーワード検索する
-     */
-    fun searchRepositories(query: String) {
         viewModelScope.launch {
-            try {
-                githubRepository.searchGithubRepos(query)
-                _lastSearchDate.value = Date()
-            } catch (exception: Throwable) {
-                Log.e("RepositorySearchViewModel", "searchRepositories", exception)
-            }
+            _effect.emit(Effect.NavigateToList(query, searchDate))
         }
     }
 }

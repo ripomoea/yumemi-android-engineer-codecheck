@@ -8,17 +8,33 @@
     <fragment
         android:id="@+id/githubRepoSearchFragment"
         android:name="jp.co.yumemi.android.codecheck.feature.github.GithubRepoSearchFragment"
-        android:label="@string/app_name"
+        android:label="@string/github_repo_search_title"
         tools:layout="@layout/fragment_githubrepo_search">
+        <action
+            android:id="@+id/action_to_githubRepoListFragment"
+            app:destination="@id/githubRepoListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/githubRepoListFragment"
+        android:name="jp.co.yumemi.android.codecheck.feature.github.GithubRepoListFragment"
+        android:label="@string/github_repo_list_title"
+        tools:layout="@layout/fragment_githubrepo_list">
         <action
             android:id="@+id/action_to_githubRepoDetailFragment"
             app:destination="@id/githubRepoDetailFragment" />
+        <argument
+            android:name="query"
+            app:argType="string" />
+        <argument
+            android:name="lastSearchDate"
+            app:argType="java.util.Date" />
     </fragment>
 
     <fragment
         android:id="@+id/githubRepoDetailFragment"
         android:name="jp.co.yumemi.android.codecheck.feature.github.GithubRepoDetailFragment"
-        android:label="@string/app_name"
+        android:label="@string/github_repo_detail_title"
         tools:layout="@layout/fragment_githubrepo_detail">
         <argument
             android:name="lastSearchDate"

@@ -1,11 +1,16 @@
 <resources>
-    <string name="app_name">Android Engineer CodeCheck</string>
-    <string name="searchInputText_hint">GitHub のリポジトリを検索できるよー</string>
+    <!-- リポジトリ検索画面 -->
+    <string name="github_repo_search_title">GitHub リポジトリ検索</string>
+    <string name="github_repo_search_searchInputText_hint">GitHub のリポジトリを検索できるよー</string>
+
+    <!-- リポジトリ一覧画面 -->
+    <string name="github_repo_list_title">GitHub リポジトリ一覧</string>
 
     <!-- リポジトリ詳細画面 -->
-    <string name="repository_detail_written_language">Written in %s</string>
-    <string name="repository_detail_stars">%1$d stars</string>
-    <string name="repository_detail_watchers">%1$d watchers</string>
-    <string name="repository_detail_forks">%1$d forks</string>
-    <string name="repository_detail_open_issues">%1$d open issues</string>
+    <string name="github_repo_detail_title">GitHub リポジトリ詳細</string>
+    <string name="github_repo_detail_writtenLanguage">Written in %s</string>
+    <string name="github_repo_detail_stars">%1$d stars</string>
+    <string name="github_repo_detail_watchers">%1$d watchers</string>
+    <string name="github_repo_detail_forks">%1$d forks</string>
+    <string name="github_repo_detail_openIssues">%1$d open issues</string>
 </resources>
