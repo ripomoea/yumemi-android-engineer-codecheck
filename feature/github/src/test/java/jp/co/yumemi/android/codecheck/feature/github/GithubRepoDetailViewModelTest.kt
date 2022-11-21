@@ -43,8 +43,11 @@ class GithubRepoDetailViewModelTest {
 
         assertEquals(
             GithubRepo(
+                id  = 1,
                 name = "kotlin",
+                ownerName = "",
                 ownerIconUrl = "",
+                description = "",
                 language = "kotlin",
                 stargazersCount = 0,
                 watchersCount = 0,
@@ -59,8 +62,11 @@ class GithubRepoDetailViewModelTest {
 }
 
 private val sampleGithubRepo = GithubRepo(
+    id  = 1,
     name = "kotlin",
+    ownerName = "",
     ownerIconUrl = "",
+    description = "",
     language = "kotlin",
     stargazersCount = 0,
     watchersCount = 0,
