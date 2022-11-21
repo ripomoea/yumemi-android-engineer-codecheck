@@ -51,8 +51,11 @@ class GithubRepoListViewModelTest {
         assertEquals(
             listOf(
                 GithubRepo(
+                    id  = 1,
                     name = "kotlin",
+                    ownerName = "",
                     ownerIconUrl = "",
+                    description = "",
                     language = "kotlin",
                     stargazersCount = 0,
                     watchersCount = 0,
@@ -60,8 +63,11 @@ class GithubRepoListViewModelTest {
                     openIssuesCount = 0,
                 ),
                 GithubRepo(
+                    id  = 2,
                     name = "swift",
+                    ownerName = "",
                     ownerIconUrl = "",
+                    description = "",
                     language = "swift",
                     stargazersCount = 0,
                     watchersCount = 0,
@@ -69,8 +75,11 @@ class GithubRepoListViewModelTest {
                     openIssuesCount = 0,
                 ),
                 GithubRepo(
+                    id  = 3,
                     name = "rust",
+                    ownerName = "",
                     ownerIconUrl = "",
+                    description = "",
                     language = "rust",
                     stargazersCount = 0,
                     watchersCount = 0,
@@ -97,8 +106,11 @@ class GithubRepoListViewModelTest {
         assertIs<GithubRepoListViewModel.Effect.NavigateToDetail>(effect)
         assertEquals(
             GithubRepo(
+                id  = 1,
                 name = "kotlin",
+                ownerName = "",
                 ownerIconUrl = "",
+                description = "",
                 language = "kotlin",
                 stargazersCount = 0,
                 watchersCount = 0,
@@ -114,8 +126,11 @@ class GithubRepoListViewModelTest {
 
 private val sampleGithubRepos = listOf(
     GithubRepo(
+        id  = 1,
         name = "kotlin",
+        ownerName = "",
         ownerIconUrl = "",
+        description = "",
         language = "kotlin",
         stargazersCount = 0,
         watchersCount = 0,
@@ -123,8 +138,11 @@ private val sampleGithubRepos = listOf(
         openIssuesCount = 0,
     ),
     GithubRepo(
+        id  = 2,
         name = "swift",
+        ownerName = "",
         ownerIconUrl = "",
+        description = "",
         language = "swift",
         stargazersCount = 0,
         watchersCount = 0,
@@ -132,8 +150,11 @@ private val sampleGithubRepos = listOf(
         openIssuesCount = 0,
     ),
     GithubRepo(
+        id  = 3,
         name = "rust",
+        ownerName = "",
         ownerIconUrl = "",
+        description = "",
         language = "rust",
         stargazersCount = 0,
         watchersCount = 0,
