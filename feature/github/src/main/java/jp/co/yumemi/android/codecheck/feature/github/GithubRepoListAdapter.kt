@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck
+package jp.co.yumemi.android.codecheck.feature.github
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import jp.co.yumemi.android.codecheck.core.model.GithubRepo
-import jp.co.yumemi.android.codecheck.databinding.ItemGithubrepoListBinding
+import jp.co.yumemi.android.codecheck.feature.github.databinding.ItemGithubrepoListBinding
 
 internal class GithubRepoListAdapter(
     private val onGithubRepoClick: (GithubRepo) -> Unit,

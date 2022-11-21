@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.codecheck
+package jp.co.yumemi.android.codecheck.feature.github
 
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
