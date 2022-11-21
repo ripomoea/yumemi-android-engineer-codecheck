@@ -1,7 +1,7 @@
 /*
  * Copyright © 2021 YUMEMI Inc. All rights reserved.
  */
-package jp.co.yumemi.android.codecheck
+package jp.co.yumemi.android.codecheck.feature.github
 
 import android.os.Bundle
 import android.view.View
@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import coil.load
 import dagger.hilt.android.AndroidEntryPoint
-import jp.co.yumemi.android.codecheck.databinding.FragmentGithubrepoDetailBinding
+import jp.co.yumemi.android.codecheck.feature.github.databinding.FragmentGithubrepoDetailBinding
 
 @AndroidEntryPoint
 class GithubRepoDetailFragment : Fragment(R.layout.fragment_githubrepo_detail) {

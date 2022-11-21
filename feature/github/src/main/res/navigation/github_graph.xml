@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/github_graph"
+    app:startDestination="@id/githubRepoSearchFragment">
+
+    <fragment
+        android:id="@+id/githubRepoSearchFragment"
+        android:name="jp.co.yumemi.android.codecheck.feature.github.GithubRepoSearchFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_githubrepo_search">
+        <action
+            android:id="@+id/action_to_githubRepoDetailFragment"
+            app:destination="@id/githubRepoDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/githubRepoDetailFragment"
+        android:name="jp.co.yumemi.android.codecheck.feature.github.GithubRepoDetailFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_githubrepo_detail">
+        <argument
+            android:name="lastSearchDate"
+            app:argType="java.util.Date" />
+        <argument
+            android:name="githubRepo"
+            app:argType="jp.co.yumemi.android.codecheck.core.model.GithubRepo" />
+    </fragment>
+
+</navigation>
