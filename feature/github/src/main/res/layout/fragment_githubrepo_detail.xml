@@ -7,28 +7,63 @@
 
     <ImageView
         android:id="@+id/ownerIconView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="16dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="@dimen/margin_3x"
+        android:layout_marginTop="@dimen/margin_3x"
         android:contentDescription="@null"
         android:src="@drawable/jetbrains"
+        app:layout_constraintBottom_toTopOf="@id/nameView"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ownerNameView"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_max="240dp" />
 
     <TextView
-        android:id="@+id/nameView"
-        android:layout_width="wrap_content"
+        android:id="@+id/ownerNameView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="JetBrains/kotlin"
+        android:layout_marginStart="@dimen/margin_2x"
+        android:layout_marginEnd="@dimen/margin_3x"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/ownerIconView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ownerIconView"
+        app:layout_constraintTop_toTopOf="@id/ownerIconView"
+        tools:text="JetBrains" />
+
+    <TextView
+        android:id="@+id/nameView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_3x"
+        android:layout_marginTop="@dimen/margin_2x"
         android:textColor="@color/black"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/descriptionView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ownerIconView" />
+        app:layout_constraintTop_toBottomOf="@id/ownerIconView"
+        tools:text="kotlin" />
+
+    <TextView
+        android:id="@+id/descriptionView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_3x"
+        android:layout_marginTop="@dimen/margin_2x"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameView"
+        tools:text="The Kotlin Programming Language." />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/centerGuid"
@@ -41,68 +76,69 @@
         android:id="@+id/languageView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Written in Kotlin"
+        android:layout_marginHorizontal="@dimen/margin_3x"
+        android:layout_marginTop="@dimen/margin_2x"
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/nameView"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintEnd_toEndOf="@id/centerGuid"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descriptionView"
+        tools:text="Written in Kotlin" />
 
     <TextView
         android:id="@+id/starsView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
-        android:text="38530 stars"
-        android:textAlignment="textEnd"
+        android:layout_marginHorizontal="@dimen/margin_3x"
+        android:layout_marginTop="@dimen/margin_2x"
+        android:gravity="end"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/centerGuid"
-        app:layout_constraintTop_toBottomOf="@id/nameView" />
+        app:layout_constraintTop_toBottomOf="@id/descriptionView"
+        tools:text="38530 stars" />
 
     <TextView
         android:id="@+id/watchersView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
-        android:text="38530 watchers"
-        android:textAlignment="textEnd"
+        android:layout_marginHorizontal="@dimen/margin_3x"
+        android:layout_marginTop="@dimen/margin_1x"
+        android:gravity="end"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/centerGuid"
-        app:layout_constraintTop_toBottomOf="@id/starsView" />
+        app:layout_constraintTop_toBottomOf="@id/starsView"
+        tools:text="38530 watchers" />
 
     <TextView
         android:id="@+id/forksView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
-        android:text="4675 forks"
-        android:textAlignment="textEnd"
+        android:layout_marginHorizontal="@dimen/margin_3x"
+        android:layout_marginTop="@dimen/margin_1x"
+        android:gravity="end"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="@id/centerGuid"
-        app:layout_constraintTop_toBottomOf="@id/watchersView" />
+        app:layout_constraintStart_toStartOf="@id/centerGuid"
+        app:layout_constraintTop_toBottomOf="@id/watchersView"
+        tools:text="4675 forks" />
 
     <TextView
         android:id="@+id/openIssuesView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
-        android:text="131 open issues"
-        android:textAlignment="textEnd"
+        android:layout_marginHorizontal="@dimen/margin_3x"
+        android:layout_marginTop="@dimen/margin_1x"
+        android:gravity="end"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/centerGuid"
-        app:layout_constraintTop_toBottomOf="@id/forksView" />
+        app:layout_constraintTop_toBottomOf="@id/forksView"
+        tools:text="131 open issues" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
