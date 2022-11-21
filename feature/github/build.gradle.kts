@@ -9,7 +9,8 @@ android {
     namespace = "jp.co.yumemi.android.codecheck.feature.github"
 
     defaultConfig {
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner =
+            "jp.co.yumemi.android.codecheck.core.testing.YumemiAndroidCodeCheckTestRunner"
     }
 
     buildTypes {
@@ -46,7 +47,8 @@ dependencies {
 
     implementation(libs.coil.kt)
 
-    testImplementation(libs.junit4)
-    androidTestImplementation(libs.androidx.test.ext)
-    androidTestImplementation(libs.androidx.test.espresso.core)
+    testImplementation(kotlin("test"))
+    testImplementation(project(":core:testing"))
+    androidTestImplementation(kotlin("test"))
+    androidTestImplementation(project(":core:testing"))
 }

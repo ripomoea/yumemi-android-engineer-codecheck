@@ -9,7 +9,8 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner =
+            "jp.co.yumemi.android.codecheck.core.testing.YumemiAndroidCodeCheckTestRunner"
     }
 
     buildTypes {
@@ -35,7 +36,8 @@ dependencies {
     implementation(libs.android.material)
     implementation(libs.androidx.constraintLayout)
 
-    testImplementation(libs.junit4)
-    androidTestImplementation(libs.androidx.test.ext)
-    androidTestImplementation(libs.androidx.test.espresso.core)
+    testImplementation(kotlin("test"))
+    testImplementation(project(":core:testing"))
+    androidTestImplementation(kotlin("test"))
+    androidTestImplementation(project(":core:testing"))
 }

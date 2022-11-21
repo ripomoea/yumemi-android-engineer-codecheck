@@ -6,10 +6,6 @@ plugins {
 android {
     namespace = "jp.co.yumemi.android.codecheck.core.data"
 
-    defaultConfig {
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
     buildTypes {
         release {
             isMinifyEnabled = true
