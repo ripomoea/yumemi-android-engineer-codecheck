@@ -25,7 +25,11 @@ class GithubRepoDetailFragment : Fragment(R.layout.fragment_githubrepo_detail) {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             githubRepoDetailViewModel.githubRepo.collect { githubRepo ->
                 binding.ownerIconView.load(githubRepo.ownerIconUrl)
+                binding.ownerNameView.text = githubRepo.ownerName
+
                 binding.nameView.text = githubRepo.name
+                binding.descriptionView.text = githubRepo.description
+
                 binding.languageView.text =
                     getString(R.string.github_repo_detail_writtenLanguage, githubRepo.language)
                 binding.starsView.text =
