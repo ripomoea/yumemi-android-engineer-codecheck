@@ -27,15 +27,15 @@ class GithubRepoDetailFragment : Fragment(R.layout.fragment_githubrepo_detail) {
                 binding.ownerIconView.load(githubRepo.ownerIconUrl)
                 binding.nameView.text = githubRepo.name
                 binding.languageView.text =
-                    getString(R.string.repository_detail_written_language, githubRepo.language)
+                    getString(R.string.github_repo_detail_writtenLanguage, githubRepo.language)
                 binding.starsView.text =
-                    getString(R.string.repository_detail_stars, githubRepo.stargazersCount)
+                    getString(R.string.github_repo_detail_stars, githubRepo.stargazersCount)
                 binding.watchersView.text =
-                    getString(R.string.repository_detail_watchers, githubRepo.watchersCount)
+                    getString(R.string.github_repo_detail_watchers, githubRepo.watchersCount)
                 binding.forksView.text =
-                    getString(R.string.repository_detail_forks, githubRepo.forksCount)
+                    getString(R.string.github_repo_detail_forks, githubRepo.forksCount)
                 binding.openIssuesView.text =
-                    getString(R.string.repository_detail_open_issues, githubRepo.openIssuesCount)
+                    getString(R.string.github_repo_detail_openIssues, githubRepo.openIssuesCount)
             }
         }
     }
