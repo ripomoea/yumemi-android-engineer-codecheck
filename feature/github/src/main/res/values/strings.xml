@@ -5,6 +5,7 @@
 
     <!-- リポジトリ一覧画面 -->
     <string name="github_repo_list_title">GitHub リポジトリ一覧</string>
+    <string name="github_repo_list_stars">%1$,d</string>
 
     <!-- リポジトリ詳細画面 -->
     <string name="github_repo_detail_title">GitHub リポジトリ詳細</string>

@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.request.Disposable
 import jp.co.yumemi.android.codecheck.core.model.GithubRepo
 import jp.co.yumemi.android.codecheck.feature.github.databinding.ItemGithubrepoListBinding
 
@@ -32,6 +34,7 @@ internal class GithubRepoViewHolder(
     onGithubRepoClick: (GithubRepo) -> Unit,
 ) : RecyclerView.ViewHolder(view) {
     private val binding = ItemGithubrepoListBinding.bind(view)
+    private var disposable: Disposable? = null
     private var currentGithubRepo: GithubRepo? = null
 
     init {
@@ -43,11 +46,27 @@ internal class GithubRepoViewHolder(
     internal fun bind(githubRepo: GithubRepo) {
         currentGithubRepo = githubRepo
 
+        githubRepo.ownerIconUrl?.let {
+            disposable = binding.ownerIconView.load(it)
+        }
+        binding.ownerNameView.text = githubRepo.ownerName
+
         binding.repositoryNameView.text = githubRepo.name
+        binding.repositoryDescriptionView.text = githubRepo.description
+
+        binding.starCountView.text = binding.root.context.getString(
+            R.string.github_repo_list_stars,
+            githubRepo.stargazersCount,
+        )
+        binding.languageView.text = githubRepo.language
     }
 
     internal fun unbind() {
         currentGithubRepo = null
+        disposable?.dispose()
+        disposable = null
+
+        binding.ownerIconView.setImageDrawable(null)
     }
 }
 
